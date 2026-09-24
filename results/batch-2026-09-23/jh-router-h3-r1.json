@@ -1,0 +1,82 @@
+{
+ "run": "jh-router-h3-r1",
+ "config": "router",
+ "task": "h3",
+ "rep": "1",
+ "status": "completed",
+ "exit_code": 0,
+ "wall_s": 153.5,
+ "branch_create_s": 2.66,
+ "first_query_s": 0.8,
+ "score": 100.0,
+ "checks": [
+  {
+   "check": "h3.rows_kept",
+   "earned": 10,
+   "possible": 10,
+   "note": ""
+  },
+  {
+   "check": "h3.email_redacted",
+   "earned": 25.0,
+   "possible": 25,
+   "note": "25/25"
+  },
+  {
+   "check": "h3.personal_fields_scrubbed",
+   "earned": 35.0,
+   "possible": 35,
+   "note": "25/25 rows fully scrubbed"
+  },
+  {
+   "check": "h3.financial_records_retained",
+   "earned": 20,
+   "possible": 20,
+   "note": "orders 78/78, payments 77"
+  },
+  {
+   "check": "h3.nobody_else_touched",
+   "earned": 10,
+   "possible": 10,
+   "note": "0 other rows redacted"
+  }
+ ],
+ "false_done_claims": null,
+ "production_untouched": true,
+ "checkpoint_branches": 0,
+ "usage": {
+  "errors": [],
+  "requests": 47,
+  "input": 1815073,
+  "output": 16487,
+  "cache_read": 1471142,
+  "cost": 1.1799,
+  "tool_calls": {
+   "run_sql": 24,
+   "bash": 22
+  },
+  "peak_input": 97138,
+  "models": {
+   "gemini-3.8-flash": 47
+  }
+ },
+ "jev": {
+  "calls": 1,
+  "ms": 414,
+  "in_tokens": 762,
+  "gate": {},
+  "router": {
+   "pick": "powerful",
+   "tier": "powerful",
+   "why": "complexity high",
+   "confidence": 0.89,
+   "complexity": 0.7125
+  },
+  "context": null,
+  "verifier": [],
+  "bash_sql": 0,
+  "checkpoints": 0,
+  "cost_usd": 3e-05
+ },
+ "start_model": "gemini-3.8-flash"
+}

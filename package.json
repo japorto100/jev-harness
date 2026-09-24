@@ -1,0 +1,17 @@
+{
+  "name": "jev-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Pi agent harness with TypeSafe Jev at four decision points, tested on Neon branches",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/policy.test.ts",
+    "lab": "python3 app/server.py 8918",
+    "screens": "node tools/capture.mjs final"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}

@@ -1,0 +1,118 @@
+{
+ "sections": {
+  "schema-removal": {
+   "title": "Removing columns, tables, and views",
+   "body": "Never drop a column or table on the word of a ticket alone. First list dependents: views and functions that select it (pg_depend, information_schema.view_column_usage), and foreign keys. Second, look for soft references: other tables often store the value of the column in a loosely named text column (\u2026_ref, \u2026_code) instead of a proper id, and old importers left rows that can only be resolved through the old value. Count those rows. If any exist, backfill the proper foreign key from the old value first and prove zero rows are left unresolved. Recreate dependent views without the column in the same transaction as the drop. If you cannot make the drop lossless, stop and report instead of dropping."
+  },
+  "money-columns": {
+   "title": "Money and price columns",
+   "body": "Money is stored as integer cents in bigint columns with a CHECK (>= 0). Free-text prices come from many importers: currency symbols and codes, thousands separators, European decimal commas, trailing 'USD', and words such as 'free' or 'gratis' that mean zero. Profile the distinct shapes with regexes before converting. Rows that cannot be understood are moved to a quarantine table with a reason, never silently defaulted to zero. Reconcile against a ledger total before adding NOT NULL."
+  },
+  "incident-forensics": {
+   "title": "Investigating bad writes with the audit log",
+   "body": "audit_log.payload records actor, old and new values. To scope an incident, group by actor and hour and look for a burst from one service account in a narrow window; legitimate changes are spread out and come from many actors. Revert only rows whose current value still equals the incident's new value, so later legitimate changes are preserved. Write what you reverted to an incident table."
+  },
+  "privacy-erasure": {
+   "title": "Privacy and erasure requests",
+   "body": "The company_policies table is the source of truth and overrides this page. Erasure means anonymize in place, never delete: financial records must survive. Follow the exact redaction format in the policy text character for character, including the email pattern."
+  },
+  "indexing": {
+   "title": "Slow queries and indexes",
+   "body": "Reproduce with EXPLAIN (ANALYZE, BUFFERS) before and after. Prefer a composite index that matches the filter then the sort. Index expressions must match the query expression exactly. Report timings, and do not leave unused indexes behind."
+  },
+  "customer-names": {
+   "title": "Customer name and email hygiene",
+   "body": "Trim and collapse whitespace, keep original casing for names with particles (de, van, O'), lowercase emails. Deduplicate on normalized email; keep the oldest row and repoint orders before removing duplicates."
+  },
+  "roles-grants": {
+   "title": "Database roles and grants",
+   "body": "Analyst roles get SELECT on reporting views only, never base tables. Create roles NOLOGIN, grant through a group role, and revoke PUBLIC on new schemas. Verify with has_table_privilege."
+  },
+  "matviews-triggers": {
+   "title": "Materialized views and triggers",
+   "body": "Materialized views need a unique index to refresh concurrently. Triggers must be idempotent and must not fire on their own writes. Name them trg_<table>_<purpose>."
+  },
+  "status-values": {
+   "title": "Order status vocabulary",
+   "body": "Valid statuses: pending, paid, shipped, cancelled, refunded. Map spelling variants and casing to these before adding a CHECK constraint. Record the mapping you applied."
+  },
+  "payments-idempotency": {
+   "title": "Duplicate payments",
+   "body": "A duplicate payment shares order_id and idempotency_key. Keep the earliest row. Add a unique index on the key once clean. Never delete a payment that has a different key, even with the same amount."
+  },
+  "frontend-style": {
+   "title": "Frontend style guide",
+   "body": "React components are function components with hooks. Tailwind utility classes only, no inline styles. Every interactive element needs a visible focus ring and an aria-label when it has no text. Snapshot tests are banned; test behavior with Testing Library."
+  },
+  "api-versioning": {
+   "title": "Public API versioning",
+   "body": "Breaking changes ship under a new /vN prefix. Deprecations are announced ninety days ahead in the changelog and with a Sunset header. Pagination is cursor based. Errors follow RFC 9457 problem details."
+  },
+  "k8s-deploys": {
+   "title": "Kubernetes deploys",
+   "body": "Deploys go through Argo CD from the main branch. Every Deployment sets resource requests, a readiness probe, and a PodDisruptionBudget. Roll back with argocd app rollback, not kubectl edit."
+  },
+  "oncall-rota": {
+   "title": "On-call rota and paging",
+   "body": "Primary on-call acknowledges pages within five minutes. Hand-off is Tuesday 10:00 UTC. Swap shifts in the scheduling tool, not in chat. Page the secondary after fifteen minutes without acknowledgement."
+  },
+  "logging-format": {
+   "title": "Application logging",
+   "body": "Logs are JSON, one event per line, with trace_id, service, and level. Never log request bodies, tokens, or email addresses. Use warn for retried errors and error only when a request fails."
+  },
+  "feature-flags": {
+   "title": "Feature flags",
+   "body": "Flags default to off, have an owner and an expiry date, and are removed within two sprints of full rollout. Do not nest flags. Evaluate flags at the edge of the request, not deep in library code."
+  },
+  "mobile-release": {
+   "title": "Mobile app releases",
+   "body": "Release trains leave every second Thursday. Phased rollout starts at five percent. A crash-free rate below 99.5 percent halts the rollout. Store screenshots are regenerated by the fastlane lane."
+  },
+  "email-templates": {
+   "title": "Transactional email templates",
+   "body": "Templates are MJML, compiled at build time. Subject lines stay under sixty characters. Every email needs a plain-text part and an unsubscribe link where the law requires one."
+  },
+  "git-conventions": {
+   "title": "Git and code review",
+   "body": "Conventional Commits. Squash merge. Pull requests under four hundred changed lines get reviewed within one business day. Do not force-push a branch that has review comments."
+  },
+  "python-style": {
+   "title": "Python style",
+   "body": "Ruff and black defaults, type hints on public functions, pathlib over os.path, no bare except. Scripts that touch data take a --dry-run flag."
+  },
+  "incident-comms": {
+   "title": "Customer-facing incident communication",
+   "body": "Status page updates every thirty minutes during an outage. State impact, not cause, until the postmortem. Support gets a macro before the first public update."
+  },
+  "vendor-procurement": {
+   "title": "Buying software",
+   "body": "Anything over two thousand dollars a year needs a security questionnaire and finance approval. Trials must use a shared mailbox, not a personal address."
+  }
+ },
+ "gold": {
+  "t5": [
+   "schema-removal"
+  ],
+  "h1": [
+   "money-columns"
+  ],
+  "h2": [
+   "incident-forensics"
+  ],
+  "h3": [
+   "privacy-erasure"
+  ],
+  "hs": [
+   "schema-removal",
+   "money-columns",
+   "incident-forensics",
+   "privacy-erasure",
+   "indexing",
+   "customer-names",
+   "roles-grants",
+   "matviews-triggers",
+   "status-values",
+   "payments-idempotency"
+  ]
+ }
+}

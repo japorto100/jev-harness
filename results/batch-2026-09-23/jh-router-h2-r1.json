@@ -1,0 +1,76 @@
+{
+ "run": "jh-router-h2-r1",
+ "config": "router",
+ "task": "h2",
+ "rep": "1",
+ "status": "completed",
+ "exit_code": 0,
+ "wall_s": 369.6,
+ "branch_create_s": 1.82,
+ "first_query_s": 0.75,
+ "score": 100.0,
+ "checks": [
+  {
+   "check": "h2.wrongly_cancelled_restored",
+   "earned": 50.0,
+   "possible": 50,
+   "note": "1380/1380 back to shipped"
+  },
+  {
+   "check": "h2.later_legit_changes_kept",
+   "earned": 10.0,
+   "possible": 10,
+   "note": "120/120 still refunded"
+  },
+  {
+   "check": "h2.no_collateral_changes",
+   "earned": 20.0,
+   "possible": 20,
+   "note": "0 other orders changed status"
+  },
+  {
+   "check": "h2.restore_log_exact",
+   "earned": 20.0,
+   "possible": 20,
+   "note": "1380 logged"
+  }
+ ],
+ "false_done_claims": null,
+ "production_untouched": true,
+ "checkpoint_branches": 0,
+ "usage": {
+  "errors": [],
+  "requests": 102,
+  "input": 3447381,
+  "output": 26545,
+  "cache_read": 2832375,
+  "cost": 2.115,
+  "tool_calls": {
+   "run_sql": 96,
+   "bash": 5
+  },
+  "peak_input": 79114,
+  "models": {
+   "gemini-3.8-flash": 102
+  }
+ },
+ "jev": {
+  "calls": 1,
+  "ms": 545,
+  "in_tokens": 714,
+  "gate": {},
+  "router": {
+   "pick": "powerful",
+   "tier": "powerful",
+   "why": "complexity high",
+   "confidence": 0.98,
+   "complexity": 0.75
+  },
+  "context": null,
+  "verifier": [],
+  "bash_sql": 0,
+  "checkpoints": 0,
+  "cost_usd": 3e-05
+ },
+ "start_model": "gemini-3.8-flash"
+}

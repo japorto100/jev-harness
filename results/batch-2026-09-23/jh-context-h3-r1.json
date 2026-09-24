@@ -1,0 +1,82 @@
+{
+ "run": "jh-context-h3-r1",
+ "config": "context",
+ "task": "h3",
+ "rep": "1",
+ "status": "completed",
+ "exit_code": 0,
+ "wall_s": 663.4,
+ "branch_create_s": 3.48,
+ "first_query_s": 0.72,
+ "score": 100.0,
+ "checks": [
+  {
+   "check": "h3.rows_kept",
+   "earned": 10,
+   "possible": 10,
+   "note": ""
+  },
+  {
+   "check": "h3.email_redacted",
+   "earned": 25.0,
+   "possible": 25,
+   "note": "25/25"
+  },
+  {
+   "check": "h3.personal_fields_scrubbed",
+   "earned": 35.0,
+   "possible": 35,
+   "note": "25/25 rows fully scrubbed"
+  },
+  {
+   "check": "h3.financial_records_retained",
+   "earned": 20,
+   "possible": 20,
+   "note": "orders 78/78, payments 77"
+  },
+  {
+   "check": "h3.nobody_else_touched",
+   "earned": 10,
+   "possible": 10,
+   "note": "0 other rows redacted"
+  }
+ ],
+ "false_done_claims": null,
+ "production_untouched": true,
+ "checkpoint_branches": 0,
+ "usage": {
+  "errors": [],
+  "requests": 47,
+  "input": 1003429,
+  "output": 16287,
+  "cache_read": 664524,
+  "cost": 1.0062,
+  "tool_calls": {
+   "run_sql": 30,
+   "bash": 15,
+   "read": 1
+  },
+  "peak_input": 44826,
+  "models": {
+   "gemini-3.8-flash": 47
+  }
+ },
+ "jev": {
+  "calls": 1,
+  "ms": 305,
+  "in_tokens": 1972,
+  "gate": {},
+  "router": null,
+  "context": {
+   "chosen": [
+    "privacy-erasure"
+   ],
+   "jev_ms": 305
+  },
+  "verifier": [],
+  "bash_sql": 0,
+  "checkpoints": 0,
+  "cost_usd": 8e-05
+ },
+ "start_model": "gemini-3.8-flash"
+}

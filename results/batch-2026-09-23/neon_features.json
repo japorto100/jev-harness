@@ -1,0 +1,216 @@
+{
+ "date": "2026-09-23 11:50 PDT",
+ "provisioning": {
+  "api_s": 0.47,
+  "first_query_after_api_s": 5.11,
+  "total_s": 5.58
+ },
+ "branching": {
+  "runs": [
+   {
+    "api_s": 0.37,
+    "first_query_after_api_s": 1.38,
+    "total_s": 1.75
+   },
+   {
+    "api_s": 0.39,
+    "first_query_after_api_s": 1.43,
+    "total_s": 1.82
+   },
+   {
+    "api_s": 0.36,
+    "first_query_after_api_s": 1.48,
+    "total_s": 1.84
+   },
+   {
+    "api_s": 0.35,
+    "first_query_after_api_s": 1.4,
+    "total_s": 1.75
+   },
+   {
+    "api_s": 0.34,
+    "first_query_after_api_s": 1.44,
+    "total_s": 1.78
+   }
+  ],
+  "p50_total_s": 1.78
+ },
+ "reset": {
+  "runs": [
+   {
+    "api_s": 0.46,
+    "first_query_after_api_s": 4.89,
+    "total_s": 5.35,
+    "column_back": true,
+    "rows_with_legacy_sku": 100000
+   },
+   {
+    "api_s": 0.42,
+    "first_query_after_api_s": 2.48,
+    "total_s": 2.9,
+    "column_back": true,
+    "rows_with_legacy_sku": 100000
+   },
+   {
+    "api_s": 0.42,
+    "first_query_after_api_s": 2.37,
+    "total_s": 2.79,
+    "column_back": true,
+    "rows_with_legacy_sku": 100000
+   },
+   {
+    "api_s": 0.38,
+    "first_query_after_api_s": 4.59,
+    "total_s": 4.97,
+    "column_back": true,
+    "rows_with_legacy_sku": 100000
+   },
+   {
+    "api_s": 0.39,
+    "first_query_after_api_s": 2.46,
+    "total_s": 2.85,
+    "column_back": true,
+    "rows_with_legacy_sku": 100000
+   }
+  ],
+  "p50_total_s": 2.9
+ },
+ "endpoint_settings": {
+  "autoscaling_limit_min_cu": 0.25,
+  "autoscaling_limit_max_cu": 0.25,
+  "suspend_timeout_seconds": 0,
+  "current_state": "active"
+ },
+ "scale_to_zero": {
+  "cold_query_s": [
+   1.07,
+   1.19,
+   1.23
+  ],
+  "p50_cold_s": 1.19,
+  "warm_query_s": 0.39,
+  "note": "compute suspended through the API, then the first query wakes it"
+ },
+ "autoscaling": {
+  "range_cu": [
+   0.25,
+   2
+  ],
+  "num_cpus_samples": [
+   [
+    0.0,
+    1.0
+   ],
+   [
+    3.4,
+    1.0
+   ],
+   [
+    6.8,
+    1.0
+   ],
+   [
+    10.2,
+    1.0
+   ],
+   [
+    13.6,
+    1.0
+   ],
+   [
+    16.9,
+    1.0
+   ],
+   [
+    20.4,
+    1.0
+   ],
+   [
+    23.7,
+    1.0
+   ],
+   [
+    27.1,
+    2.0
+   ],
+   [
+    30.5,
+    2.0
+   ],
+   [
+    33.9,
+    2.0
+   ],
+   [
+    37.3,
+    2.0
+   ],
+   [
+    40.6,
+    2.0
+   ],
+   [
+    44.1,
+    2.0
+   ],
+   [
+    47.4,
+    2.0
+   ],
+   [
+    50.8,
+    2.0
+   ],
+   [
+    54.2,
+    2.0
+   ],
+   [
+    57.6,
+    2.0
+   ],
+   [
+    61.0,
+    2.0
+   ],
+   [
+    64.4,
+    2.0
+   ],
+   [
+    67.8,
+    2.0
+   ],
+   [
+    71.2,
+    2.0
+   ],
+   [
+    74.6,
+    2.0
+   ],
+   [
+    78.0,
+    2.0
+   ],
+   [
+    81.4,
+    2.0
+   ],
+   [
+    84.8,
+    2.0
+   ],
+   [
+    88.2,
+    2.0
+   ],
+   [
+    91.6,
+    2.0
+   ]
+  ],
+  "min_vcpu": 1.0,
+  "max_vcpu": 2.0
+ }
+}

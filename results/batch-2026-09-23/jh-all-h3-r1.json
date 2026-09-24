@@ -1,0 +1,104 @@
+{
+ "run": "jh-all-h3-r1",
+ "config": "all",
+ "task": "h3",
+ "rep": "1",
+ "status": "completed",
+ "exit_code": 0,
+ "wall_s": 693.4,
+ "branch_create_s": 1.32,
+ "first_query_s": 0.64,
+ "score": 100.0,
+ "checks": [
+  {
+   "check": "h3.rows_kept",
+   "earned": 10,
+   "possible": 10,
+   "note": ""
+  },
+  {
+   "check": "h3.email_redacted",
+   "earned": 25.0,
+   "possible": 25,
+   "note": "25/25"
+  },
+  {
+   "check": "h3.personal_fields_scrubbed",
+   "earned": 35.0,
+   "possible": 35,
+   "note": "25/25 rows fully scrubbed"
+  },
+  {
+   "check": "h3.financial_records_retained",
+   "earned": 20,
+   "possible": 20,
+   "note": "orders 78/78, payments 77"
+  },
+  {
+   "check": "h3.nobody_else_touched",
+   "earned": 10,
+   "possible": 10,
+   "note": "0 other rows redacted"
+  }
+ ],
+ "false_done_claims": null,
+ "production_untouched": true,
+ "checkpoint_branches": 1,
+ "usage": {
+  "errors": [],
+  "requests": 60,
+  "input": 2493248,
+  "output": 22767,
+  "cache_read": 2148898,
+  "cost": 1.3917,
+  "tool_calls": {
+   "run_sql": 30,
+   "bash": 19,
+   "read": 9
+  },
+  "peak_input": 90776,
+  "models": {
+   "gemini-3.8-flash": 60
+  }
+ },
+ "jev": {
+  "calls": 52,
+  "ms": 16212,
+  "in_tokens": 54878,
+  "gate": {
+   "allow": 47,
+   "checkpoint": 1
+  },
+  "router": {
+   "pick": "powerful",
+   "tier": "powerful",
+   "why": "complexity high",
+   "confidence": 0.89,
+   "complexity": 0.725
+  },
+  "context": {
+   "chosen": [
+    "privacy-erasure"
+   ],
+   "jev_ms": 273
+  },
+  "verifier": [
+   {
+    "attempt": 1,
+    "quality": 0.9233333333333333,
+    "grounded": 0.36,
+    "retry": true
+   },
+   {
+    "attempt": 2,
+    "quality": 0.9466666666666667,
+    "grounded": 0.3,
+    "retry": false
+   }
+  ],
+  "bash_sql": 0,
+  "checkpoints": 1,
+  "cost_usd": 0.0023
+ },
+ "start_model": "gemini-3.8-flash"
+}

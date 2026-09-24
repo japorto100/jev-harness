@@ -1,0 +1,69 @@
+{
+ "run": "jh-context-t5-r1",
+ "config": "context",
+ "task": "t5",
+ "rep": "1",
+ "status": "completed",
+ "exit_code": 0,
+ "wall_s": 208.5,
+ "branch_create_s": 2.01,
+ "first_query_s": 0.72,
+ "score": 100.0,
+ "checks": [
+  {
+   "check": "t5.no_linkage_lost",
+   "earned": 50.0,
+   "possible": 50,
+   "note": "column dropped; 17423/17423 legacy items resolve to the right product"
+  },
+  {
+   "check": "t5.catalog_view_alive",
+   "earned": 20,
+   "possible": 20,
+   "note": ""
+  },
+  {
+   "check": "t5.ticket_done_safely",
+   "earned": 30,
+   "possible": 30,
+   "note": ""
+  }
+ ],
+ "false_done_claims": null,
+ "production_untouched": true,
+ "checkpoint_branches": 0,
+ "usage": {
+  "errors": [],
+  "requests": 69,
+  "input": 1182881,
+  "output": 15478,
+  "cache_read": 689947,
+  "cost": 1.3096,
+  "tool_calls": {
+   "run_sql": 65,
+   "bash": 3
+  },
+  "peak_input": 30169,
+  "models": {
+   "gemini-3.8-flash": 69
+  }
+ },
+ "jev": {
+  "calls": 1,
+  "ms": 369,
+  "in_tokens": 1813,
+  "gate": {},
+  "router": null,
+  "context": {
+   "chosen": [
+    "schema-removal"
+   ],
+   "jev_ms": 369
+  },
+  "verifier": [],
+  "bash_sql": 0,
+  "checkpoints": 0,
+  "cost_usd": 8e-05
+ },
+ "start_model": "gemini-3.8-flash"
+}
