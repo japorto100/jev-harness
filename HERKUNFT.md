@@ -9,5 +9,7 @@
   und Ergebnisse (Details im README dieses Repos).
 - **Warum hier:** JEV-/Pi-Umfeld des Labs; eigenständig versioniert und gepflegt, nicht in den Harness
   kopiert (HARNESS-Regel: Fremdcode nur commit-gepinnt + Herkunft).
+- **Transkript:** [`YOUTUBE-TRANSCRIPT.md`](YOUTUBE-TRANSCRIPT.md) — **verbatim** ASR-Transkript des
+  Hersteller-Videos (Motivation, vier Entscheidungspunkte, Benchmark/Traps, Ergebnisse, Design-Flaws).
 - **Updates:** im Harness `git submodule update --remote JEV_Prompt_engineer`, danach den Pointer committen.
   Eigene Anpassungen **im Fork** committen und pushen — kein Upstream-Push ohne Owner-Entscheid.
